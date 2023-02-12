@@ -1,0 +1,7 @@
+module:
+  base_uri: /trash
+  class: Trash
+  services:
+    trash-rame:
+      uri: /
+      method: jhgk

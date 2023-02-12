@@ -1,6 +1,7 @@
 {
   "require": {
-    "ramsey/uuid": "^4.6"
+    "ramsey/uuid": "^4.6",
+    "symfony/yaml": "^6.2"
   },
   "autoload": {
     "psr-4": {

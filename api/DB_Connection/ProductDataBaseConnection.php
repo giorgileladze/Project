@@ -2,7 +2,7 @@
 
 namespace api\DB_Connection;
 
-use api\products\model\Product;
+use api\modules\products\model\Product;
 use Exception;
 use PDO;
 use PDOException;

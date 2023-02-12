@@ -1,0 +1,17 @@
+module:
+  base_uri: /user
+  services:
+    create_user:
+      uri: /create
+      method: api\modules\users\src\controllers\UserController::create_user
+      request_method: POST
+
+    delete_user:
+      uri: /delete/{id}
+      method: api\modules\users\src\controllers\UserController::delete_user
+      request_method: DELETE
+
+    get_user_info:
+      uri: /get-info/{id}
+      method: api\modules\users\src\controllers\UserController::get_user_info
+      request_method: GET
