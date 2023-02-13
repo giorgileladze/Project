@@ -2,21 +2,33 @@
 
 namespace api\modules\users\src\controllers;
 
+use api\modules\users\src\services\UserFactory;
+use api\modules\users\src\services\UserServices;
+
 class UserController
 {
-    public function create_user (array $user_data = []) : void {
-        echo "create";
+    private UserServices $user_service;
+
+    public function __construct () {
+        $this->user_service = new UserServices();
     }
 
-    public function delete_user (int $id = 0) : void {
-        echo "delete";
-        echo $id;
+    public function create_user (array $user_data) : void {
+        $factory = UserFactory::get_user_factory();
+
+        $user_object = $factory->create_user_object($user_data);
+
+        $this->user_service->save_user_object($user_object);
+    }
+
+    public function delete_user (int $id) : void {
+        $this->user_service->delete_user_by_id($id);
     }
 
     public function get_user_info (int $id = 0) : array {
-        echo "get info";
-        echo $id;
-        return [];
+        $user_info = $this->user_service->select_user_by_id($id);
+
+        return $user_info;
     }
 
 }

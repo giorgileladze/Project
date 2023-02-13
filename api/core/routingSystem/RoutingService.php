@@ -7,11 +7,15 @@ use ReflectionClass;
 
 abstract class RoutingService
 {
+    private string $searching_root = "../modules/*";
     public function initialize_routes () : array {
         $routes = [];
 
-        foreach (glob("../modules/*", GLOB_ONLYDIR) as $moduleDir){
+        foreach (glob($this->searching_root, GLOB_ONLYDIR) as $moduleDir){
+
             $file = $moduleDir . "/routes.yml";
+            if(!file_exists($file)) continue;
+
             $fileContent = Yaml::parseFile($file);
 
             $base_uri = $fileContent["module"]["base_uri"];
